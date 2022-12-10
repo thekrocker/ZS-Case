@@ -15,6 +15,11 @@ namespace Manager
         protected override void Awake()
         {
             base.Awake();
+            CreatePools();
+        }
+
+        private void CreatePools()
+        {
             _collectParticlePool = new ObjectPooling<Poolable>(collectParticle, OnPullAction, OnPushAction, 1, particleParent);
         }
 

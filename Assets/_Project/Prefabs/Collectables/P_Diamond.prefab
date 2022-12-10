@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6445948378365226349}
   - component: {fileID: 893529350227377152}
   - component: {fileID: 2776163171199982056}
+  - component: {fileID: 3959051802786410880}
   m_Layer: 6
   m_Name: P_Diamond
   m_TagString: Untagged
@@ -48,6 +49,21 @@ MonoBehaviour:
   minRotateSpeed: 35
   maxRotateSpeed: 70
   resource: {fileID: 11400000, guid: 4fa12af027ce1c7428a340be7bb3b089, type: 2}
+  OnCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3959051802786410880}
+        m_TargetAssemblyTypeName: PoofParticleHandler, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!135 &2776163171199982056
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -61,6 +77,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.45, z: 0}
+--- !u!114 &3959051802786410880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893529350227377159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cdf1f011a96ea4489dd51322b0e1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3819824373219185323
 GameObject:
   m_ObjectHideFlags: 0
