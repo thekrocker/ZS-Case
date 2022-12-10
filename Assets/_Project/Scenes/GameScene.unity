@@ -1845,8 +1845,8 @@ MonoBehaviour:
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
   m_XDamping: 0
-  m_YDamping: 0.5
-  m_ZDamping: 0.5
+  m_YDamping: 0
+  m_ZDamping: 0
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
@@ -2324,8 +2324,8 @@ Camera:
   m_GameObject: {fileID: 1798818578}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.8113208, g: 0.8113208, b: 0.8113208, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2366,7 +2366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798818578}
   m_LocalRotation: {x: 0.16943552, y: -0, z: -0, w: 0.9855413}
-  m_LocalPosition: {x: 0, y: 4.960546, z: -5.730906}
+  m_LocalPosition: {x: 0, y: 4.960546, z: -4.9289055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1348193369}
@@ -2420,7 +2420,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 1
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -2498,7 +2498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866140489}
   m_LocalRotation: {x: 0.16943552, y: 0, z: 0, w: 0.9855413}
-  m_LocalPosition: {x: 0, y: 4.960546, z: -5.730906}
+  m_LocalPosition: {x: 0, y: 4.960546, z: -4.9289055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1323603460}
@@ -2778,7 +2778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51523132444731727, guid: 73fd3a0450ac79b4f910499bcc37321e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.802
       objectReference: {fileID: 0}
     - target: {fileID: 51523132444731727, guid: 73fd3a0450ac79b4f910499bcc37321e, type: 3}
       propertyPath: m_LocalRotation.w

@@ -26,11 +26,13 @@ namespace Player.Input
         public Vector3 GetMousePos() => Mouse.current.position.ReadValue();
         private void OnDragStart(InputAction.CallbackContext obj)
         {
+            Debug.Log("Started dragging!");
             OnStartDrag?.Invoke();
         }
         
         private void OnDragEnd(InputAction.CallbackContext obj)
         {
+            Debug.Log("Ended dragging!");
             OnEndDrag?.Invoke();
         }
 

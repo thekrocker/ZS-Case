@@ -7,5 +7,4 @@ public class PlayerMovementStats : ScriptableObject
 {
     public float moveSpeed;
     public float xSensivity;
-    public float xClampValue;
 }

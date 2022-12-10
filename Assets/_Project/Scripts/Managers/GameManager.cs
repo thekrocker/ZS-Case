@@ -7,4 +7,5 @@ public class GameManager : SingletonClass.Singleton<GameManager>
 {
     [SerializeField] private BoxCollider platformTemplate;
     public float GetPlatformLength() => platformTemplate.size.z;
+    public float GetPlatformWidth() => platformTemplate.size.x;
 }
