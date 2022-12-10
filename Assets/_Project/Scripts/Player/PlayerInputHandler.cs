@@ -1,4 +1,5 @@
 ﻿using System;
+using Statics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,24 +22,33 @@ namespace Player.Input
         private void OnEnable()
         {
             _inputAction.Enable();
+            StaticEvents.OnGameEnded += DisableInput;
         }
 
-        public Vector3 GetMousePos() => Mouse.current.position.ReadValue();
+        private void DisableInput()
+        {
+            _inputAction.Disable();
+        }
+
+        public Vector3 GetMousePos()
+        {
+            return Mouse.current.position.ReadValue();
+        }
+
         private void OnDragStart(InputAction.CallbackContext obj)
         {
-            Debug.Log("Started dragging!");
             OnStartDrag?.Invoke();
         }
         
         private void OnDragEnd(InputAction.CallbackContext obj)
         {
-            Debug.Log("Ended dragging!");
             OnEndDrag?.Invoke();
         }
 
         private void OnDisable()
         {
-            _inputAction.Disable();
+            DisableInput();
+            StaticEvents.OnGameEnded -= DisableInput;
         }
     }
 }

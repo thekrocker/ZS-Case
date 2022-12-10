@@ -27,20 +27,20 @@ namespace Player
         {
             CalculateClampValue();
         }
-
-        private void CalculateClampValue()
-        {
-            float offset = .5f;
-            _xClampValue = (GameManager.Instance.GetPlatformWidth() / 2f) - offset;
-        }
-
+        
         private void OnEnable()
         {
             _inputHandler.OnStartDrag += StartDrag;
             _inputHandler.OnEndDrag += EndDrag;
         }
-
-        private void Update()
+        
+        private void CalculateClampValue()
+        {
+            float offset = .5f;
+            _xClampValue = (GameManager.Instance.GetPlatformWidth() / 2f) - offset;
+        }
+        
+        public void TryMove()
         {
             MoveForward();
             if (_isDragging) HandleXMovement();
