@@ -1139,44 +1139,12 @@ PrefabInstance:
       value: Level 1
       objectReference: {fileID: 0}
     - target: {fileID: 8049699965961500405, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}
-      propertyPath: collectableZOffset
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049699965961500405, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}
-      propertyPath: collectableSpawnAmount
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049699965961500405, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}
-      propertyPath: collectablePrefabs.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049699965961500405, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}
-      propertyPath: collectableXOffsets.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049699965961500405, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}
       propertyPath: diamondXPositions.Array.data[0]
       value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8049699965961500405, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}
       propertyPath: diamondXPositions.Array.data[2]
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049699965961500405, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}
-      propertyPath: collectablePrefabs.Array.data[0]
-      value: 
-      objectReference: {fileID: 4662656681483067401, guid: fc15bb425d1cba84884dd11c4604aa67, type: 3}
-    - target: {fileID: 8049699965961500405, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}
-      propertyPath: collectablePrefabs.Array.data[1]
-      value: 
-      objectReference: {fileID: 893529350227377159, guid: 6a3c6e5752cfbac4eafef688e7f99738, type: 3}
-    - target: {fileID: 8049699965961500405, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}
-      propertyPath: collectableXOffsets.Array.data[0]
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8049699965961500405, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}
-      propertyPath: collectableXOffsets.Array.data[2]
-      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b110711666824748a9f1e63a3c3dac7, type: 3}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Project.Scripts.EventArgs;
 using Sirenix.OdinInspector;
 using Statics;
 using TMPro;
@@ -20,8 +21,8 @@ public class PersistentPanel : MonoBehaviour
     
     private void Start()
     {
-        SetCurrencyGoldUI(currencyGoldResource.CurrentAmount);
-        SetDiamondUI(diamondResource.CurrentAmount);
+        SetCurrencyGoldUI();
+        SetDiamondUI();
     }
 
     private void OnEnable()
@@ -31,18 +32,29 @@ public class PersistentPanel : MonoBehaviour
         StaticEvents.OnLevelChanged += SetLevelText;
     }
 
+    private void SetCurrencyGoldUI(object sender, ResourceArgs e)
+    {
+        SetText(currencyGoldText, e.Current);
+    }
+
+    private void SetDiamondUI(object sender, ResourceArgs e)
+    {
+        SetText(diamondText, e.Current);
+
+    }
+
     private void SetLevelText(int obj)
     {
         SetText(levelText, obj, "LEVEL ");
     }
 
-    private void SetCurrencyGoldUI(int amount)
+    private void SetCurrencyGoldUI()
     {
-        SetText(currencyGoldText, amount);
+        SetText(currencyGoldText, currencyGoldResource.CurrentAmount);
     }
-    private void SetDiamondUI(int amount)
+    private void SetDiamondUI()
     {
-        SetText(diamondText, amount);
+        SetText(diamondText, diamondResource.CurrentAmount);
     }
     
     private void SetText(TextMeshProUGUI txt, int amount, string prefix = "")

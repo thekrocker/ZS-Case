@@ -79,12 +79,15 @@ MonoBehaviour:
   finishLine: {fileID: 1352831675105085185, guid: 4339e373d6adb954181991b9b96139bc, type: 3}
   platformAmount: 30
   collectableParent: {fileID: 4343781027570832975}
-  diamondPrefab: {fileID: 893529350227377159, guid: 6a3c6e5752cfbac4eafef688e7f99738, type: 3}
-  diamondSpawnAmount: 3
-  diamondXPositions:
-  - -3
+  collectablePrefabs:
+  - {fileID: 4662656681483067401, guid: fc15bb425d1cba84884dd11c4604aa67, type: 3}
+  - {fileID: 893529350227377159, guid: 6a3c6e5752cfbac4eafef688e7f99738, type: 3}
+  collectableSpawnAmount: 22
+  collectableXOffsets:
+  - -1.5
   - 0
-  - 3
+  - 1.5
+  collectableZOffset: 15
 --- !u!1 &1323603459
 GameObject:
   m_ObjectHideFlags: 0

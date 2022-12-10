@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3072463638175467833}
   - component: {fileID: 8937866586154612395}
   - component: {fileID: 8940779531714482142}
+  - component: {fileID: 5312444296912087711}
   - component: {fileID: 5937145964750068159}
   - component: {fileID: 1064095186317462230}
   m_Layer: 0
@@ -104,6 +105,20 @@ MonoBehaviour:
   stateLog: 
   <Movement>k__BackingField: {fileID: 601988113239856150}
   <Animation>k__BackingField: {fileID: 5829738424485996637}
+--- !u!114 &5312444296912087711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51523132444731726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68fad243c833c454fa522673737fb66a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diamond: {fileID: 11400000, guid: 4fa12af027ce1c7428a340be7bb3b089, type: 2}
+  fill: {fileID: 6360534964144341504}
 --- !u!54 &5937145964750068159
 Rigidbody:
   m_ObjectHideFlags: 0

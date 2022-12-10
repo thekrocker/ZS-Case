@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Project.Scripts.EventArgs;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class Resource : ScriptableObject
     [SerializeField] private int max = Int32.MaxValue;
 
     
-    public Action<int> OnValueChanged;
+    public EventHandler<ResourceArgs> OnValueChanged;
     
     public int CurrentAmount
     {
@@ -24,7 +25,12 @@ public class Resource : ScriptableObject
         set
         {
             currentAmount = Mathf.Clamp(value, min, max);
-            OnValueChanged?.Invoke(currentAmount);
+            
+            OnValueChanged?.Invoke(this, new ResourceArgs() {
+                Initial = initialAmount,
+                Current = currentAmount,
+                Max = max
+            });
         }
     }
 
