@@ -1,0 +1,74 @@
+{
+    "name": "Player_InputAction",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "578aff04-117e-4ad2-80ae-6f5d15eab02f",
+            "actions": [
+                {
+                    "name": "OnDragStart",
+                    "type": "Button",
+                    "id": "9fd5514d-3f52-4637-b074-aaa674a01e6a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "OnDragEnd",
+                    "type": "Button",
+                    "id": "6361aec1-5ac7-45ca-ba35-45e04bc386e1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0f867f18-e1ac-41ff-99c0-8a785d594357",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnDragStart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b6070190-161b-4362-995c-f9b874160f5c",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnDragStart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e311525-0672-4414-be23-20c811f3e365",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnDragEnd",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8576c1f2-1543-4dc9-a949-7c1232a96307",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnDragEnd",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
