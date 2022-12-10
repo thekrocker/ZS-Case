@@ -1,19 +1,20 @@
 using System;
-using Player.PlayerInput;
+using Player.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player.PlayerMovement
+namespace Player
 {
     [RequireComponent(typeof(PlayerInputHandler))]
     public class PlayerMovement : MonoBehaviour
     {
-        [SerializeField] private float xSensivity;
-        [SerializeField] private float xClampValue;
+        [SerializeField] private Transform model;
+        [SerializeField] private PlayerMovementStats stats;
 
         private Vector3 _firstPosition, _deltaPosition, _destinationPosition;
         private bool _isDragging;
         
+        //Input refs
         private PlayerInputHandler _inputHandler;
         
         private void Awake()
@@ -29,7 +30,13 @@ namespace Player.PlayerMovement
 
         private void Update()
         {
+            MoveForward();
             if (_isDragging) Drag();
+        }
+
+        private void MoveForward()
+        {
+            transform.position += transform.forward * (stats.moveSpeed * Time.deltaTime);
         }
 
         private void StartDrag()
@@ -40,19 +47,22 @@ namespace Player.PlayerMovement
 
         private void Drag()
         {
+            // Calculates delta between first & drag position, add it to pos X.
+            
             Vector3 mousePos = _inputHandler.GetMousePos();
             
             _deltaPosition = mousePos - _firstPosition;
             _deltaPosition.y = 0f;
             _firstPosition = mousePos;
 
-            _destinationPosition = transform.position + _deltaPosition * (xSensivity * Time.deltaTime);
-            _destinationPosition.x = Mathf.Clamp(_destinationPosition.x, -xClampValue, xClampValue);
-            transform.position = _destinationPosition;
+            _destinationPosition = model.position + _deltaPosition * (stats.xSensivity * Time.deltaTime);
+            _destinationPosition.x = Mathf.Clamp(_destinationPosition.x, -stats.xClampValue, stats.xClampValue);
+            model.position = _destinationPosition;
         }
         
         private void EndDrag()
         {
+            // Reset input values
             _isDragging = false;
             _firstPosition = _inputHandler.GetMousePos();
             _deltaPosition = Vector3.zero;
