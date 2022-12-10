@@ -1,18 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Player;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Collectable
 {
-    public class Diamond : MonoBehaviour, ICollectable
+    public class Diamond : CollectableItem
     {
-        [SerializeField] private Resource diamondStackResource;
-        
-        public void Collect(Collector collector)
+        public override void Collect()
         {
             // Set collect effects here..
-            diamondStackResource.Increase();
+            base.Collect();
         }
     }
 }

@@ -3,12 +3,11 @@ using UnityEngine;
 
 namespace Collectable
 {
-    public class Gold : MonoBehaviour, ICollectable
+    public class Gold : CollectableItem
     {
-        [SerializeField] private Resource currencyResource;
-        public void Collect(Collector collector)
+        public override void Collect()
         {
-            currencyResource.Increase();
+            base.Collect();
         }
     }
 }

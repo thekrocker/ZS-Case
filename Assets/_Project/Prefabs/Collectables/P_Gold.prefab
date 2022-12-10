@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1560491069238456675}
   - component: {fileID: 9075242752649570535}
   - component: {fileID: 8068187953409382263}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb2d9fcf14b4295b408cba51cf66d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currencyResource: {fileID: 11400000, guid: 1ec16cdee6f19be4093d4edb1b7753d2, type: 2}
+  minRotateSpeed: 35
+  maxRotateSpeed: 70
+  resource: {fileID: 11400000, guid: 1ec16cdee6f19be4093d4edb1b7753d2, type: 2}
 --- !u!65 &8068187953409382263
 BoxCollider:
   m_ObjectHideFlags: 0

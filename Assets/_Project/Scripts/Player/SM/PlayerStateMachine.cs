@@ -16,6 +16,7 @@ namespace _Project.Scripts.Player.SM
         #endregion
         
         [field: SerializeField] public PlayerMovement Movement { get; private set; }
+        [field: SerializeField] public PlayerAnimation Animation { get; private set; }
 
         public override BaseState GetInitialState()
         {

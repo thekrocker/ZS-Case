@@ -10,7 +10,7 @@ namespace _Project.Scripts.Player.SM
 
         public override void Enter()
         {
-            
+            Machine.Animation.SetMoveAnim(true);
         }
 
         public override void Update()

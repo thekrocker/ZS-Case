@@ -10,7 +10,8 @@ namespace _Project.Scripts.Player.SM
 
         public override void Enter()
         {
-            StaticEvents.OnGameStarted += SetInGameState;
+            StaticEvents.OnTappedToPlay += SetInGameState;
+            Machine.Animation.SetMoveAnim(false);
         }
 
         private void SetInGameState()
@@ -24,7 +25,7 @@ namespace _Project.Scripts.Player.SM
 
         public override void Exit()
         {
-            StaticEvents.OnGameStarted -= SetInGameState;
+            StaticEvents.OnTappedToPlay -= SetInGameState;
         }
     }
 }

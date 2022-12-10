@@ -1,4 +1,6 @@
-﻿namespace _Project.Scripts.Player.SM
+﻿using Statics;
+
+namespace _Project.Scripts.Player.SM
 {
     public class EndGameState : PlayerBaseState
     {
@@ -8,7 +10,8 @@
 
         public override void Enter()
         {
-            
+            StaticEvents.OnGameEnded?.Invoke();
+            Machine.Animation.SetDanceAnim();
         }
 
         public override void Update()

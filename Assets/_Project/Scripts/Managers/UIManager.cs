@@ -1,15 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using _Project.Scripts.UI;
 using Helpers;
 using Sirenix.OdinInspector;
 using Statics;
 using UnityEngine;
 
+[DefaultExecutionOrder(-350)]
 public class UIManager : SingletonClass.Singleton<UIManager>
 {
-    [Title("Panel References")]
+    [Title("Panel References")] [SerializeField]
+    private PersistentPanel persistentPanel;
+
     [SerializeField] private PreGamePanel preGamePanel;
     [SerializeField] private InGamePanel inGamePanel;
     [SerializeField] private EndGamePanel endGamePanel;
@@ -21,51 +21,59 @@ public class UIManager : SingletonClass.Singleton<UIManager>
         base.Awake();
         SetInitialPanel();
     }
+
     private void SetInitialPanel()
     {
         _activePanel = preGamePanel;
+        ActivatePanelVisibility();
+        SetPersistentPanel(true);
     }
 
     private void OnEnable()
     {
-        AddPanelListeners();
+        StaticEvents.OnPreGameStarted += ActivatePreGamePanel;
+        StaticEvents.OnTappedToPlay += ActivateInGamePanel;
+        StaticEvents.OnGameEnded += ActivateEndGamePanel;
     }
-    
-    private void OnClickPreGamePanel()
+
+    private void SetPersistentPanel(bool s)
+    {
+        persistentPanel.gameObject.SetActive(s);
+    }
+
+    private void ActivatePreGamePanel()
+    {
+        ChangePanel(preGamePanel);
+        SetPersistentPanel(true);
+    }
+
+    private void ActivateInGamePanel()
     {
         ChangePanel(inGamePanel);
     }
 
+    private void ActivateEndGamePanel()
+    {
+        ChangePanel(endGamePanel);
+        SetPersistentPanel(false);
+    }
+
+
     private void ChangePanel(BasePanel obj)
     {
-        DisablePanel(_activePanel.gameObject);
+        DisablePanelVisibility();
         _activePanel = obj;
-        ActivatePanel(_activePanel.gameObject);
+        ActivatePanelVisibility();
         obj.OnPanelActivation();
     }
-    
-    public void ActivatePanel(GameObject obj)
-    {
-        obj.SetActive(true);
-    }
-    public void DisablePanel(GameObject obj)
-    {
-        obj.SetActive(false);
-    }
 
-    private void AddPanelListeners()
-    {
-        preGamePanel.AddListener(OnClickPreGamePanel);
-    }
+    public void ActivatePanelVisibility() => _activePanel.gameObject.SetActive(true);
+    public void DisablePanelVisibility() => _activePanel.gameObject.SetActive(false);
 
-    private void RemovePanelListeners()
-    {
-        preGamePanel.RemoveListener(OnClickPreGamePanel);
-    }
 
     private void OnDisable()
     {
-        RemovePanelListeners();
+        StaticEvents.OnPreGameStarted -= ActivatePreGamePanel;
+        StaticEvents.OnGameEnded -= ActivateEndGamePanel;
     }
-    
 }

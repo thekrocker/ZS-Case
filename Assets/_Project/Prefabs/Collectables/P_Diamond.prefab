@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6445948378365226349}
   - component: {fileID: 893529350227377152}
   - component: {fileID: 2776163171199982056}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P_Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b3fb7a3f8a7e74c88907a239048ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diamondStackResource: {fileID: 11400000, guid: 4fa12af027ce1c7428a340be7bb3b089, type: 2}
+  minRotateSpeed: 35
+  maxRotateSpeed: 70
+  resource: {fileID: 11400000, guid: 4fa12af027ce1c7428a340be7bb3b089, type: 2}
 --- !u!135 &2776163171199982056
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -11,7 +11,6 @@ namespace _Project.Scripts.UI
         public override void OnPanelActivation()
         {
             base.OnPanelActivation();
-            StaticEvents.OnGameStarted?.Invoke();
         }
     }
 }

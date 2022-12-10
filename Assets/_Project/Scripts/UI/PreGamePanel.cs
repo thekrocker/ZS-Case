@@ -15,9 +15,23 @@ public class PreGamePanel : BasePanel
     public void AddListener(UnityAction action) => panelButton.onClick.AddListener(action);
     public void RemoveListener(UnityAction action) => panelButton.onClick.RemoveListener(action);
 
+    private void OnEnable()
+    {
+        AddListener(OnTapPlay);
+    }
+
+    private void OnTapPlay()
+    {
+        StaticEvents.OnTappedToPlay?.Invoke();
+    }
+
     public override void OnPanelActivation()
     {
         base.OnPanelActivation();
-        StaticEvents.OnPreGameStarted?.Invoke();
+    }
+
+    private void OnDisable()
+    {
+        RemoveListener(OnTapPlay);
     }
 }

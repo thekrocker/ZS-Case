@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Helpers;
 using UnityEngine;
 
+[DefaultExecutionOrder(-360)]
 public class GameManager : SingletonClass.Singleton<GameManager>
 {
     [SerializeField] private BoxCollider platformTemplate;
