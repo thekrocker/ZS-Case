@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.EventArgs;
+using Helpers;
 using Sirenix.OdinInspector;
 using Statics;
 using TMPro;
@@ -13,7 +14,8 @@ public class PersistentPanel : MonoBehaviour
     [SerializeField] private Resource diamondResource;
     [SerializeField] private Resource currencyGoldResource;
 
-    [Title("UI Refs")]
+    [Title("UI Refs")] 
+    [SerializeField] private Transform currencyGoldPanel;
     [SerializeField] private TextMeshProUGUI diamondText;
     [SerializeField] private TextMeshProUGUI currencyGoldText;
     [SerializeField] private TextMeshProUGUI levelText;
@@ -35,6 +37,7 @@ public class PersistentPanel : MonoBehaviour
     private void SetCurrencyGoldUI(object sender, ResourceArgs e)
     {
         SetText(currencyGoldText, e.Current);
+        currencyGoldPanel.PulseSingle(Vector3.one, Vector3.one * 1.15f, .1f, 0f);
     }
 
     private void SetDiamondUI(object sender, ResourceArgs e)

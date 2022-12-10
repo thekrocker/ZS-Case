@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using Helpers;
 using UnityEngine;
 
-[DefaultExecutionOrder(-360)]
-public class GameManager : SingletonClass.Singleton<GameManager>
+namespace Manager
 {
-    [SerializeField] private BoxCollider platformTemplate;
-    public float GetPlatformLength() => platformTemplate.size.z;
-    public float GetPlatformWidth() => platformTemplate.size.x;
+    [DefaultExecutionOrder(-360)]
+    public class GameManager : SingletonClass.Singleton<GameManager>
+    {
+        [SerializeField] private BoxCollider platformTemplate;
+        public float GetPlatformLength() => platformTemplate.size.z;
+        public float GetPlatformWidth() => platformTemplate.size.x;
+    }
 }

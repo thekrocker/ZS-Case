@@ -4,76 +4,79 @@ using Sirenix.OdinInspector;
 using Statics;
 using UnityEngine;
 
-[DefaultExecutionOrder(-350)]
-public class UIManager : SingletonClass.Singleton<UIManager>
+namespace Manager
 {
-    [Title("Panel References")] [SerializeField]
-    private PersistentPanel persistentPanel;
-
-    [SerializeField] private PreGamePanel preGamePanel;
-    [SerializeField] private InGamePanel inGamePanel;
-    [SerializeField] private EndGamePanel endGamePanel;
-
-    private BasePanel _activePanel;
-
-    protected override void Awake()
+    [DefaultExecutionOrder(-350)]
+    public class UIManager : SingletonClass.Singleton<UIManager>
     {
-        base.Awake();
-        SetInitialPanel();
-    }
+        [Title("Panel References")] [SerializeField]
+        private PersistentPanel persistentPanel;
 
-    private void SetInitialPanel()
-    {
-        _activePanel = preGamePanel;
-        ActivatePanelVisibility();
-        SetPersistentPanel(true);
-    }
+        [SerializeField] private PreGamePanel preGamePanel;
+        [SerializeField] private InGamePanel inGamePanel;
+        [SerializeField] private EndGamePanel endGamePanel;
 
-    private void OnEnable()
-    {
-        StaticEvents.OnPreGameStarted += ActivatePreGamePanel;
-        StaticEvents.OnTappedToPlay += ActivateInGamePanel;
-        StaticEvents.OnGameEnded += ActivateEndGamePanel;
-    }
+        private BasePanel _activePanel;
 
-    private void SetPersistentPanel(bool s)
-    {
-        persistentPanel.gameObject.SetActive(s);
-    }
+        protected override void Awake()
+        {
+            base.Awake();
+            SetInitialPanel();
+        }
 
-    private void ActivatePreGamePanel()
-    {
-        ChangePanel(preGamePanel);
-        SetPersistentPanel(true);
-    }
+        private void SetInitialPanel()
+        {
+            _activePanel = preGamePanel;
+            ActivatePanelVisibility();
+            SetPersistentPanel(true);
+        }
 
-    private void ActivateInGamePanel()
-    {
-        ChangePanel(inGamePanel);
-    }
+        private void OnEnable()
+        {
+            StaticEvents.OnPreGameStarted += ActivatePreGamePanel;
+            StaticEvents.OnTappedToPlay += ActivateInGamePanel;
+            StaticEvents.OnGameEnded += ActivateEndGamePanel;
+        }
 
-    private void ActivateEndGamePanel()
-    {
-        ChangePanel(endGamePanel);
-        SetPersistentPanel(false);
-    }
+        private void SetPersistentPanel(bool s)
+        {
+            persistentPanel.gameObject.SetActive(s);
+        }
+
+        private void ActivatePreGamePanel()
+        {
+            ChangePanel(preGamePanel);
+            SetPersistentPanel(true);
+        }
+
+        private void ActivateInGamePanel()
+        {
+            ChangePanel(inGamePanel);
+        }
+
+        private void ActivateEndGamePanel()
+        {
+            ChangePanel(endGamePanel);
+            SetPersistentPanel(false);
+        }
 
 
-    private void ChangePanel(BasePanel obj)
-    {
-        DisablePanelVisibility();
-        _activePanel = obj;
-        ActivatePanelVisibility();
-        obj.OnPanelActivation();
-    }
+        private void ChangePanel(BasePanel obj)
+        {
+            DisablePanelVisibility();
+            _activePanel = obj;
+            ActivatePanelVisibility();
+            obj.OnPanelActivation();
+        }
 
-    public void ActivatePanelVisibility() => _activePanel.gameObject.SetActive(true);
-    public void DisablePanelVisibility() => _activePanel.gameObject.SetActive(false);
+        public void ActivatePanelVisibility() => _activePanel.gameObject.SetActive(true);
+        public void DisablePanelVisibility() => _activePanel.gameObject.SetActive(false);
 
 
-    private void OnDisable()
-    {
-        StaticEvents.OnPreGameStarted -= ActivatePreGamePanel;
-        StaticEvents.OnGameEnded -= ActivateEndGamePanel;
+        private void OnDisable()
+        {
+            StaticEvents.OnPreGameStarted -= ActivatePreGamePanel;
+            StaticEvents.OnGameEnded -= ActivateEndGamePanel;
+        }
     }
 }
