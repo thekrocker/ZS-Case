@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using _Project.Scripts.Interfaces;
 using Player;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Obstacle : MonoBehaviour, ITriggerable
 {
@@ -11,6 +12,7 @@ public class Obstacle : MonoBehaviour, ITriggerable
     [SerializeField] private Transform model;
     [SerializeField] private Resource diamond;
 
+    public UnityEvent OnHit;
     private void Update()
     {
         SelfRotate();
@@ -24,6 +26,7 @@ public class Obstacle : MonoBehaviour, ITriggerable
     public void Hit()
     {
         diamond.Decrease();
+        OnHit.Invoke();
         gameObject.SetActive(false);
     }
 

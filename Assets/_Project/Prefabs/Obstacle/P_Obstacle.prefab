@@ -31,6 +31,36 @@ Transform:
   m_Father: {fileID: 3258339513762212448}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5874832507599878140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1618013967927729268}
+  m_Layer: 6
+  m_Name: ParticleSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1618013967927729268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874832507599878140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.537, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3258339513762212448}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8657358115557915402
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,6 +72,7 @@ GameObject:
   - component: {fileID: 3258339513762212448}
   - component: {fileID: 5964314920256872165}
   - component: {fileID: 8657358115557915401}
+  - component: {fileID: 7299538552004423444}
   m_Layer: 6
   m_Name: P_Obstacle
   m_TagString: Untagged
@@ -61,6 +92,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1225816104411544929}
+  - {fileID: 1618013967927729268}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92,6 +124,34 @@ MonoBehaviour:
   rotateSpeed: 500
   model: {fileID: 7229154670133678066}
   diamond: {fileID: 11400000, guid: 4fa12af027ce1c7428a340be7bb3b089, type: 2}
+  OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7299538552004423444}
+        m_TargetAssemblyTypeName: PoofParticleHandler, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7299538552004423444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8657358115557915402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cdf1f011a96ea4489dd51322b0e1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSpawnPoint: {fileID: 1618013967927729268}
 --- !u!1001 &7194962902188681241
 PrefabInstance:
   m_ObjectHideFlags: 0

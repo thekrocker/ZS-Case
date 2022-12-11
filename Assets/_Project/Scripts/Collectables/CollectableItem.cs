@@ -1,5 +1,6 @@
 using System;
 using _Project.Scripts.Interfaces;
+using DG.Tweening;
 using Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -37,9 +38,15 @@ namespace Collectable
 
         public virtual void Collect()
         {
+            GetComponent<Collider>().enabled = false;
             resource.Increase();
             OnCollected?.Invoke();
-            gameObject.SetActive(false);
+            ScaleDown();
+        }
+
+        private void ScaleDown()
+        {
+            transform.DOScale(Vector3.zero, .4f).SetEase(Ease.Flash).OnComplete(() => gameObject.SetActive(false));
         }
 
         public void Trigger(TriggerDetector detector)

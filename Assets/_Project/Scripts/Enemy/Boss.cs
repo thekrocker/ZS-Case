@@ -5,13 +5,31 @@ using _Project.Scripts.Enemy;
 using Manager;
 using Statics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
+[Serializable]
+public class BossVisualProperties
+{
+    public Color[] rndColors;
+    public SkinnedMeshRenderer mRenderer;
+
+    public void SetRandomColor()
+    {
+        mRenderer.material.color = rndColors[Random.Range(0, rndColors.Length)];
+    }
+}
 
 public class Boss : MonoBehaviour, IDamageable<float>
 {
     // REFACTOR LATER TO boss anim controller
     [SerializeField] private Animator animator;
+    [SerializeField] private BossVisualProperties visualProperties;
+    
+    
+    
     private static readonly int DieTrigger = Animator.StringToHash("dieTrigger");
+    private static readonly int RoarTrigger = Animator.StringToHash("roarTrigger");
+    private static readonly int HitTrigger = Animator.StringToHash("hitTrigger");
 
     public Health Health { get; set; }
 
@@ -19,6 +37,7 @@ public class Boss : MonoBehaviour, IDamageable<float>
     {
         Health = GetComponent<Health>();
         BossManager.Instance.DamageableBoss = this;
+        visualProperties.SetRandomColor();
     }
 
     private void OnEnable()
@@ -30,13 +49,24 @@ public class Boss : MonoBehaviour, IDamageable<float>
     private void OnBossDamaged()
     {
         // Play shader or smth..
+        animator.SetTrigger(HitTrigger);
     }
 
     private void OnDie()
     {
         StaticEvents.OnBossDefeated?.Invoke();
-        animator.SetTrigger(DieTrigger);
+        DieAnim();
         Debug.Log("Boss Died"); 
+    }
+
+    private void DieAnim()
+    {
+        animator.SetTrigger(DieTrigger);
+    }
+
+    public void RoarAnim() // Unity event by trigger
+    {
+        animator.SetTrigger(RoarTrigger);
     }
 
     public void Damage(float amount)

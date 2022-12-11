@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1560491069238456675}
   - component: {fileID: 9075242752649570535}
   - component: {fileID: 8068187953409382263}
-  - component: {fileID: 4376781174236042964}
   m_Layer: 6
   m_Name: P_Gold
   m_TagString: Untagged
@@ -31,6 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2995722349055960674}
+  - {fileID: 6013180642341035289}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,19 +51,7 @@ MonoBehaviour:
   resource: {fileID: 11400000, guid: 1ec16cdee6f19be4093d4edb1b7753d2, type: 2}
   OnCollected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4376781174236042964}
-        m_TargetAssemblyTypeName: PoofParticleHandler, Assembly-CSharp
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!65 &8068187953409382263
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77,18 +65,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7608468, y: 0.7046122, z: 0.22370535}
   m_Center: {x: -0.002379924, y: 0.4222326, z: 0.032488734}
---- !u!114 &4376781174236042964
-MonoBehaviour:
+--- !u!1 &8462408407931063144
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4662656681483067401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80cdf1f011a96ea4489dd51322b0e1fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6013180642341035289}
+  m_Layer: 6
+  m_Name: ParticleSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6013180642341035289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462408407931063144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.412, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1560491069238456675}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8778043158069874341
 GameObject:
   m_ObjectHideFlags: 0
