@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.UI;
+using DG.Tweening;
 using Helpers;
 using Statics;
 using TMPro;
@@ -24,9 +25,10 @@ public class PreGamePanel : BasePanel
         PulseText();
     }
 
+    private Sequence _seq;
     private void PulseText()
     {
-        tapToStartText.transform.PulseLoop(Vector3.one, Vector3.one * 1.3f, .3f, 0f);
+        _seq = tapToStartText.transform.PulseLoop(Vector3.one, Vector3.one * 1.3f, .3f, 0f);
     }
 
     private void OnTapPlay()
@@ -42,5 +44,6 @@ public class PreGamePanel : BasePanel
     private void OnDisable()
     {
         RemoveListener(OnTapPlay);
+        _seq.Kill();
     }
 }

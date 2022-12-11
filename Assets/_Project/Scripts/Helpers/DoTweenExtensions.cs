@@ -11,13 +11,12 @@ namespace Helpers
     /// </summary>
     public static class DoTweenExtensions
     {
-        public static void PulseLoop(this Transform target, Vector3 initialScale, Vector3 targetScale,
+        public static Sequence PulseLoop(this Transform target, Vector3 initialScale, Vector3 targetScale,
             float duration = .3f, float delay = .3f, LoopType type = LoopType.Restart, Action OnComplete = null)
         {
-            DOTween.Sequence()
-                .Append(target.DOScale(targetScale, duration).SetDelay(delay))
+            return DOTween.Sequence().Append(target.DOScale(targetScale, duration).SetDelay(delay))
                 .Append(target.DOScale(initialScale, duration)).OnComplete(() => OnComplete?.Invoke())
-                .SetLoops(-1, type);
+                .SetLoops(-1, type).SetLink(target.gameObject);
         }
 
         public static void PulseSingle(this Transform target, Vector3 initialScale, Vector3 targetScale, float duration = .3f, float delay = .3f, Action completeAction = null)

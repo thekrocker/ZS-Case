@@ -1,4 +1,6 @@
 using System;
+using _Project.Scriptable_Objects.So_Scripts;
+using _Project.Scripts.UI;
 
 namespace Statics
 {
@@ -11,6 +13,11 @@ namespace Statics
         public static Action OnNextButtonClicked;
         public static Action OnPlayerAttack;
         public static Action OnBossDefeated;
+        
+        // SHOP
+        
+        public static Func<StatUpgradeData, bool> OnTryUpgradeStat;
+        public static Action OnUpgradeSuccess;
     }
 }
 

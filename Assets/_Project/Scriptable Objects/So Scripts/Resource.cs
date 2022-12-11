@@ -48,4 +48,9 @@ public class Resource : ScriptableObject
     public void SetCurrent(int amount) => CurrentAmount = amount;
 
     public void SetCurrentToInitial() => SetCurrent(initialAmount);
+
+    public void UpgradeInitial(int amount)
+    {
+        initialAmount += amount;
+    }
 }
