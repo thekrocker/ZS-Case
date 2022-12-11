@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.EventArgs;
 using Helpers;
+using Statics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,18 @@ namespace Player
         private void OnEnable()
         {
             diamond.OnValueChanged += SetStackBar;
+            StaticEvents.OnPreGameStarted += DisableBar;
+            StaticEvents.OnTappedToPlay += EnableBar;
+        }
+
+        private void EnableBar()
+        {
+            barPanel.gameObject.SetActive(true);
+        }
+
+        private void DisableBar()
+        {
+            barPanel.gameObject.SetActive(false);
         }
 
         private void SetStackBar(object sender, ResourceArgs e)
@@ -46,6 +59,8 @@ namespace Player
         private void OnDisable()
         {
             diamond.OnValueChanged -= SetStackBar;
+            StaticEvents.OnPreGameStarted -= DisableBar;
+            StaticEvents.OnTappedToPlay -= EnableBar;
         }
     }
 }

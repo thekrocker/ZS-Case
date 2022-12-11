@@ -44,8 +44,8 @@ namespace Collectable
             GetComponent<Collider>().enabled = false;
             resource.Increase(collectableData.increaseRate);
             OnCollected?.Invoke();
-            //ScaleDown();
-            MoveUp();
+            gameObject.SetActive(false);
+            
         }
 
         private float _tweenDuration = .3f;

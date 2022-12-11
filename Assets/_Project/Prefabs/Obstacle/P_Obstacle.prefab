@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80cdf1f011a96ea4489dd51322b0e1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   particleSpawnPoint: {fileID: 1618013967927729268}
 --- !u!1001 &7194962902188681241
 PrefabInstance:
