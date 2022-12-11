@@ -15,6 +15,8 @@ namespace _Project.Scriptable_Objects.So_Scripts
         public void UpgradeAvailable()
         {
             OnUpgradeAvailable?.Invoke(statIncreaseRate);
+            IncreaseLevel();
+            IncreaseCost();
         }
     }
 }

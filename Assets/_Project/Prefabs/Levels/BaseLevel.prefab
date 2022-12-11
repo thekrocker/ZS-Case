@@ -83,6 +83,7 @@ MonoBehaviour:
   - {fileID: 4662656681483067401, guid: fc15bb425d1cba84884dd11c4604aa67, type: 3}
   - {fileID: 893529350227377159, guid: 6a3c6e5752cfbac4eafef688e7f99738, type: 3}
   - {fileID: 8657358115557915402, guid: 69f88e104ab354643aa0147980b99098, type: 3}
+  - {fileID: 893529350227377159, guid: 6a3c6e5752cfbac4eafef688e7f99738, type: 3}
   collectableSpawnAmount: 19
   collectableXOffsets:
   - -1.5

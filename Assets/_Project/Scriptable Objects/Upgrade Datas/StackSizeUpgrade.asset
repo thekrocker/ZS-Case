@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efb732b86024ed7870a0009678570fe, type: 3}
   m_Name: StackSizeUpgrade
   m_EditorClassIdentifier: 
+  costId: 1195329663
+  levelId: 1203407553
   cost: 50
   level: 1
   sprite: {fileID: 0}
   upgradeName: 
-  statIncreaseRate: 0
+  statIncreaseRate: 1

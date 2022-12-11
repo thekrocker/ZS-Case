@@ -28,4 +28,10 @@ public abstract class BaseUpgradeUI : MonoBehaviour
     protected abstract void SetCostText(int amount);
     protected abstract void SetLevelText(int amount);
     protected abstract void SetUpgradeSprite();
+
+    private void OnDisable()
+    {
+        clickButton.onClick.RemoveListener(OnClickButton);
+
+    }
 }

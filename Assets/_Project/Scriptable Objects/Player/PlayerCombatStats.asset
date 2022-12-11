@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5701351174244627aace4e6eb158a944, type: 3}
   m_Name: PlayerCombatStats
   m_EditorClassIdentifier: 
-  initialDamage: 2
+  initialDamage: 50
   currentDamage: 2
   initialAttackRate: 0.5
   currentAttackRate: 0.5

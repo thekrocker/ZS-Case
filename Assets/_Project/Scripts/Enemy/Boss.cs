@@ -59,20 +59,22 @@ public class Boss : MonoBehaviour, IDamageable<float>
 
     private void OnBossDamaged()
     {
-        animator.SetTrigger(HitTrigger);
+        if (Health.CurrentHp <= 0)
+        {
+            animator.SetTrigger(DieTrigger);
+        }
+        else
+        {
+            animator.SetTrigger(HitTrigger);
+        }
     }
 
     private void OnDie()
     {
         StaticEvents.OnBossDefeated?.Invoke();
-        DieAnim();
         Debug.Log("Boss Died");
     }
-
-    private void DieAnim()
-    {
-        animator.SetTrigger(DieTrigger);
-    }
+    
 
     public void RoarAnim() // Unity event by trigger
     {

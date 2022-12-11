@@ -7,9 +7,9 @@ namespace _Project.Scripts.Upgrades
     {
         [SerializeField] private PlayerCombatStats stats;
         
-        public override void Upgrade()
+        public override void Upgrade(float amount)
         {
-            stats.CurrentDamage += upgradeData.statIncreaseRate;
-        }
+            stats.CurrentDamage += amount;
+        }   
     }
 }

@@ -12,15 +12,35 @@ namespace Manager
     public class GameManager : SingletonClass.Singleton<GameManager>
     {
         [SerializeField] private Resource currencyGold;
+        [SerializeField] private Resource diamond;
+        
         [SerializeField] private BoxCollider platformTemplate;
         
         public float GetPlatformLength() => platformTemplate.size.z;
         public float GetPlatformWidth() => platformTemplate.size.x;
 
 
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            currencyGold.LoadInitialAsCurrent();
+            currencyGold.SetCurrentToInitial();
+            
+            diamond.LoadInitial();
+            diamond.SetCurrentToInitial();
+        }
+        
+
         private void OnEnable()
         {
             StaticEvents.OnTryUpgradeStat += TryUpgradeStat;
+            StaticEvents.OnNextLevelInit += SetInitialStack;
+        }
+
+        private void SetInitialStack()
+        {
+            diamond.SetCurrentToInitial();
         }
 
         private bool TryUpgradeStat(StatUpgradeData data)
@@ -39,6 +59,7 @@ namespace Manager
         private void OnDisable()
         {
             StaticEvents.OnTryUpgradeStat -= TryUpgradeStat;
+            StaticEvents.OnNextLevelInit -= SetInitialStack;
         }
         // I would create SHOPManager to handle economy later..
         

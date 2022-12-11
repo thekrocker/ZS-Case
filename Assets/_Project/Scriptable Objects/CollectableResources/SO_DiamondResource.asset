@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b5293ef72cad4438e154f504e6d4c9, type: 3}
   m_Name: SO_DiamondResource
   m_EditorClassIdentifier: 
+  defaultInitialAmount: 0
   initialAmount: 0
   currentAmount: 0
+  shouldSaveInitial: 1
   min: 0
-  max: 40
+  max: 10

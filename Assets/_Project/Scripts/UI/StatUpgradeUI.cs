@@ -21,6 +21,7 @@ namespace _Project.Scripts.UI
             SetCostText(statData.cost);
             SetLevelText(statData.level);
             SetStatInfo();
+            SetUpgradeSprite();
         }
 
         private void LoadStats()

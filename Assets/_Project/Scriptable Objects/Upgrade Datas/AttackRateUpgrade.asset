@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0efb732b86024ed7870a0009678570fe, type: 3}
   m_Name: AttackRateUpgrade
   m_EditorClassIdentifier: 
+  costId: 1141007397
+  levelId: 1452381883
   cost: 50
   level: 1
   sprite: {fileID: 21300000, guid: 36116eef3bbe59b419c66b252709fab9, type: 3}

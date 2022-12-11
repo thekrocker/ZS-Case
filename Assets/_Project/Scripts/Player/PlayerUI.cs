@@ -13,7 +13,12 @@ namespace Player
         [SerializeField] private Resource diamond;
         [SerializeField] private Transform barPanel;
         [SerializeField] private Image fill;
-        
+
+
+        private void Start()
+        {
+            SetStackBar(diamond.CurrentAmount, diamond.Max);
+        }
 
         private void OnEnable()
         {
@@ -22,8 +27,13 @@ namespace Player
 
         private void SetStackBar(object sender, ResourceArgs e)
         {
-            float current = e.Current;
-            float max = e.Max;
+            SetStackBar(e.Current, e.Max);
+        }
+
+        private void SetStackBar(float amount, float maxValue)
+        {
+            float current = amount;
+            float max = maxValue;
             fill.fillAmount = current / max;
             PulsePanel();
         }

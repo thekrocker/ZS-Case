@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class BaseUpgradeData : ScriptableObject
 {
-    [Title("Func")]
+    [Title("Func")] 
+    public int costId;
+    public int levelId;
+    
     public int cost;
     public int level = 1;
     
@@ -23,7 +27,7 @@ public abstract class BaseUpgradeData : ScriptableObject
         {
             cost = value;
             OnCostChanged?.Invoke(cost);
-            SaveStat(Cost);
+            SaveStat(costId, Cost);
         }
     }
 
@@ -34,18 +38,35 @@ public abstract class BaseUpgradeData : ScriptableObject
         {
             level = value;
             OnLevelChanged?.Invoke(level);
-            SaveStat(Level);
+            SaveStat(levelId,Level);
         }
     }
 
-    public void SaveStat(int stat)
+    public void SaveStat(int id,int stat)
     {
-        PlayerPrefs.SetInt(nameof(stat), stat);
+        PlayerPrefs.SetInt($"{id}", stat);
+    }
+
+    protected void IncreaseLevel()
+    {
+        Level++;
+    }
+
+    protected void IncreaseCost()
+    {
+        Cost *= 2;
     }
 
     public void LoadStats()
     {
-        Level = PlayerPrefs.GetInt(nameof(Level), 1);
-        Cost = PlayerPrefs.GetInt(nameof(Cost), cost);
+        Level = PlayerPrefs.GetInt($"{levelId}", 1);
+        Cost = PlayerPrefs.GetInt($"{costId}", cost);
+    }
+
+    [Button("Get Rnd ID")]
+    private void SetRandomID()
+    {
+        levelId = Random.Range(0, Int32.MaxValue);
+        costId = Random.Range(0, Int32.MaxValue);
     }
 }

@@ -6,9 +6,9 @@ namespace _Project.Scripts.Upgrades
     {
         [SerializeField] private Resource stack;
         
-        public override void Upgrade()
+        public override void Upgrade(float amount)
         {
-            stack.UpgradeInitial(Mathf.RoundToInt(upgradeData.statIncreaseRate));
+            stack.Upgrade(Mathf.RoundToInt(amount));
         }
     }
 }

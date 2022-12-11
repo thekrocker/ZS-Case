@@ -36,6 +36,7 @@ namespace Manager
             if (CurrentLevelController != null) Destroy(CurrentLevelController.gameObject);
             IncreaseLevelIdx();
             SpawnLevel();
+            StaticEvents.OnNextLevelInit?.Invoke();
         }
 
         private void IncreaseLevelIdx() => CurrentLevelIdx++;
