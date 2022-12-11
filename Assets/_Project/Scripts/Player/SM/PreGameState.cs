@@ -10,7 +10,7 @@ namespace _Project.Scripts.Player.SM
 
         public override void Enter()
         {
-            StaticEvents.OnTappedToPlay += SetInGameState;
+            StaticEvents.OnInGameCamBlent += SetInGameState;
         }
 
         private void SetInGameState()
@@ -24,7 +24,7 @@ namespace _Project.Scripts.Player.SM
 
         public override void Exit()
         {
-            StaticEvents.OnTappedToPlay -= SetInGameState;
+            StaticEvents.OnInGameCamBlent -= SetInGameState;
         }
     }
 }

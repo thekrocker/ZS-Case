@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27648463ea444d91bbe275348ebad879, type: 3}
   m_Name: DiamondEconomy
   m_EditorClassIdentifier: 
-  increaseRate: 1
+  increaseRate: 2

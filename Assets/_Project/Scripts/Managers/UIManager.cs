@@ -36,7 +36,7 @@ namespace Manager
             StaticEvents.OnPreGameStarted += ActivatePreGamePanel;
             StaticEvents.OnTappedToPlay += ActivateInGamePanel;
             StaticEvents.OnArrivedFinish += DisablePersistentPanel;
-            StaticEvents.OnBossDefeated += ActivateEndGamePanel;
+            StaticEvents.OnEndGameCamBlent += ActivateEndGamePanel;
         }
 
         private void SetPersistentPanel(bool s)
@@ -83,7 +83,7 @@ namespace Manager
             StaticEvents.OnPreGameStarted -= ActivatePreGamePanel;
             StaticEvents.OnTappedToPlay -= ActivateInGamePanel;
             StaticEvents.OnArrivedFinish -= DisablePersistentPanel;
-            StaticEvents.OnBossDefeated -= ActivateEndGamePanel;
+            StaticEvents.OnEndGameCamBlent -= ActivateEndGamePanel;
         }
     }
 }

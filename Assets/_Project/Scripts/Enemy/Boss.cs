@@ -13,9 +13,20 @@ public class BossVisualProperties
     public Color[] rndColors;
     public SkinnedMeshRenderer mRenderer;
 
-    public void SetRandomColor()
+    public Color SetRandomColor()
     {
-        mRenderer.material.color = rndColors[Random.Range(0, rndColors.Length)];
+        SetColor(rndColors[Random.Range(0, rndColors.Length)]);
+        return mRenderer.material.color;
+    }
+
+    public void SetColor(Color c)
+    {
+        mRenderer.material.color = c;
+    }
+
+    public void SetDamageColor()
+    {
+        SetColor(Color.white);
     }
 }
 
@@ -32,11 +43,13 @@ public class Boss : MonoBehaviour, IDamageable<float>
 
     public Health Health { get; set; }
 
+    private Color _initialColor;
+    
     private void Awake()
     {
         Health = GetComponent<Health>();
         SetCurrentBoss();
-        SetRndColor();
+        _initialColor =SetRndColor();
     }
 
     private void OnEnable()
@@ -46,9 +59,22 @@ public class Boss : MonoBehaviour, IDamageable<float>
     }
 
 
-    private void SetRndColor()
+    private Color SetRndColor()
     {
-        visualProperties.SetRandomColor();
+        return visualProperties.SetRandomColor();
+    }
+
+    private void SetDamageColor()
+    {
+        WaitForSeconds delay = new WaitForSeconds(0.07f);
+        StartCoroutine(IESetDamageColor());
+
+        IEnumerator IESetDamageColor()
+        {
+            visualProperties.SetDamageColor();
+            yield return delay;
+            visualProperties.SetColor(_initialColor);
+        }
     }
 
     private void SetCurrentBoss()
@@ -59,6 +85,8 @@ public class Boss : MonoBehaviour, IDamageable<float>
 
     private void OnBossDamaged()
     {
+        SetDamageColor();
+
         if (Health.CurrentHp <= 0)
         {
             animator.SetTrigger(DieTrigger);
@@ -73,7 +101,7 @@ public class Boss : MonoBehaviour, IDamageable<float>
     {
         StaticEvents.OnBossDefeated?.Invoke();
     }
-    
+
 
     public void RoarAnim() // Unity event by trigger
     {

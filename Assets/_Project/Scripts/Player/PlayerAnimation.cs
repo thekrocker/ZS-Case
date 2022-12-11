@@ -28,7 +28,7 @@ public class PlayerAnimation : MonoBehaviour
     private void OnEnable()
     {
         StaticEvents.OnPreGameStarted += PlayIdle;
-        StaticEvents.OnTappedToPlay += PlayMove;
+        StaticEvents.OnInGameCamBlent += PlayMove;
         StaticEvents.OnPlayerAttack += SetAttackAnim;
         StaticEvents.OnBossDefeated += SetDanceAnim;
         StaticEvents.OnArrivedFinish += PlayIdle;
@@ -65,7 +65,7 @@ public class PlayerAnimation : MonoBehaviour
     private void OnDisable()
     {
         StaticEvents.OnPreGameStarted -= PlayIdle;
-        StaticEvents.OnTappedToPlay -= PlayMove;
+        StaticEvents.OnInGameCamBlent -= PlayMove;
         StaticEvents.OnPlayerAttack -= SetAttackAnim;
         StaticEvents.OnBossDefeated -= SetDanceAnim;
         StaticEvents.OnArrivedFinish -= PlayIdle;

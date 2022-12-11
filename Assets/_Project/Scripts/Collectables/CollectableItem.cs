@@ -44,12 +44,22 @@ namespace Collectable
             GetComponent<Collider>().enabled = false;
             resource.Increase(collectableData.increaseRate);
             OnCollected?.Invoke();
-            ScaleDown();
+            //ScaleDown();
+            MoveUp();
         }
 
+        private float _tweenDuration = .3f;
         private void ScaleDown()
         {
-            transform.DOScale(Vector3.zero, .4f).SetEase(Ease.Flash).OnComplete(() => gameObject.SetActive(false));
+            transform.DOScale(Vector3.zero, _tweenDuration).SetEase(Ease.Flash);
+        }
+
+        private void MoveUp()
+        {
+            Sequence seq = DOTween.Sequence();
+            seq.AppendCallback(ScaleDown);
+            seq.Append(transform.DOMoveY(transform.position.y + 6f, _tweenDuration).SetEase(Ease.Linear));
+            seq.OnComplete(() => gameObject.SetActive(false));
         }
 
         public void Trigger(TriggerDetector detector)

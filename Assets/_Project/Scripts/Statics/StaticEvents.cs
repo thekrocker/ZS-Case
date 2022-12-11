@@ -21,6 +21,9 @@ namespace Statics
         public static Func<StatUpgradeData, bool> OnTryUpgradeStat;
         public static Action OnUpgradeSuccess;
 
+        // CAM
+        public static Action OnInGameCamBlent;
+        public static Action OnEndGameCamBlent;
 
     }
 }
