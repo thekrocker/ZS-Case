@@ -13,14 +13,14 @@ namespace _Project.Scripts.Player
     {
         [SerializeField] private Resource diamondResource;
         [SerializeField] private PlayerCombatStats stats;
-        
+
         private PlayerInputHandler _inputHandler;
         private WaitForSeconds _waitTime;
+
         private void Awake()
         {
             _inputHandler = GetComponent<PlayerInputHandler>();
             _waitTime = new WaitForSeconds(stats.CurrentAttackRate);
-
         }
 
         private void Start()
@@ -35,34 +35,38 @@ namespace _Project.Scripts.Player
         }
 
         private bool _attacking;
+
         private void OnAttack()
         {
             if (!HasEnoughResource()) return;
             if (_attacking) return;
-            
+
             _attacking = true;
-            
+
             StartCoroutine(IEAttack());
-            
+
             IEnumerator IEAttack()
             {
                 if (HasEnoughResource())
                 {
-                    StaticEvents.OnPlayerAttack?.Invoke();
-                    BossManager.Instance.DamageableBoss.Damage(stats.CurrentDamage);
-                    diamondResource.Decrease();
+                    Attack();
                 }
                 else
                 {
-                    // Not enough resource... end it..
+                    StaticEvents.OnLose?.Invoke();
                     yield break;
-                } 
-                
+                }
+
                 yield return _waitTime;
                 _attacking = false;
             }
+        }
 
-
+        private void Attack()
+        {
+            StaticEvents.OnPlayerAttack?.Invoke();
+            BossManager.Instance.DamageableBoss.Damage(stats.CurrentDamage);
+            diamondResource.Decrease();
         }
 
         private bool HasEnoughResource()

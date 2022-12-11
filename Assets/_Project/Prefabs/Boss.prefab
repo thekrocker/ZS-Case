@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossTransform: {fileID: 6325583481658049617}
-  offset: -40
+  offset: -50
 --- !u!1 &6325583481658049616
 GameObject:
   m_ObjectHideFlags: 0

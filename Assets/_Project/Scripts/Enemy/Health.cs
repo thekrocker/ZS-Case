@@ -20,6 +20,8 @@ namespace _Project.Scripts.Enemy
             }
         }
 
+        public bool IsDead => CurrentHp <= 0f;
+
         public float Ratio => CurrentHp / initial.floatValue;
         private void Start()
         {

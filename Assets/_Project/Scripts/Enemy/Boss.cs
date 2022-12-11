@@ -72,7 +72,6 @@ public class Boss : MonoBehaviour, IDamageable<float>
     private void OnDie()
     {
         StaticEvents.OnBossDefeated?.Invoke();
-        Debug.Log("Boss Died");
     }
     
 

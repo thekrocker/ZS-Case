@@ -13,6 +13,7 @@ namespace Statics
         public static Action OnNextButtonClicked;
         public static Action OnPlayerAttack;
         public static Action OnBossDefeated;
+        public static Action OnLose;
         public static Action OnNextLevelInit;
         
         // SHOP

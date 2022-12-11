@@ -49,6 +49,7 @@ MonoBehaviour:
   minRotateSpeed: 35
   maxRotateSpeed: 70
   resource: {fileID: 11400000, guid: 1ec16cdee6f19be4093d4edb1b7753d2, type: 2}
+  collectableData: {fileID: 11400000, guid: e3281bd1756487e42b4a5c5f1810ae16, type: 2}
   OnCollected:
     m_PersistentCalls:
       m_Calls: []

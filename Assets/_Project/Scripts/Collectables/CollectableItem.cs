@@ -1,4 +1,5 @@
 using System;
+using _Project.Scriptable_Objects.So_Scripts;
 using _Project.Scripts.Interfaces;
 using DG.Tweening;
 using Player;
@@ -17,6 +18,8 @@ namespace Collectable
         
         [Title("Resource Props")]
         [SerializeField] protected Resource resource;
+        [SerializeField] private CollectableEconomySo collectableData;
+        
 
         private float _rotateSpeed;
 
@@ -39,7 +42,7 @@ namespace Collectable
         public virtual void Collect()
         {
             GetComponent<Collider>().enabled = false;
-            resource.Increase();
+            resource.Increase(collectableData.increaseRate);
             OnCollected?.Invoke();
             ScaleDown();
         }
