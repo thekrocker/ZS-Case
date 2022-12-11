@@ -18,7 +18,7 @@ namespace Collectable
         
         [Title("Resource Props")]
         [SerializeField] protected Resource resource;
-        [SerializeField] private CollectableEconomySo collectableData;
+        [SerializeField] protected CollectableEconomySo collectableData;
         
 
         private float _rotateSpeed;
@@ -45,7 +45,6 @@ namespace Collectable
             resource.Increase(collectableData.increaseRate);
             OnCollected?.Invoke();
             gameObject.SetActive(false);
-            
         }
 
         private float _tweenDuration = .3f;
@@ -54,7 +53,7 @@ namespace Collectable
             transform.DOScale(Vector3.zero, _tweenDuration).SetEase(Ease.Flash);
         }
 
-        private void MoveUp()
+        protected void MoveUp()
         {
             Sequence seq = DOTween.Sequence();
             seq.AppendCallback(ScaleDown);

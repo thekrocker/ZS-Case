@@ -7,7 +7,10 @@ namespace Collectable
     {
         public override void Collect()
         {
-            base.Collect();
+            GetComponent<Collider>().enabled = false;
+            resource.Increase(collectableData.increaseRate);
+            OnCollected?.Invoke();
+            MoveUp();
         }
     }
 }

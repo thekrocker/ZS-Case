@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using _Project.Scripts.EventArgs;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(menuName = "Economy/New Resource")]
 public class Resource : ScriptableObject
 {
+    [Title("Save IDS")]
+    public int InitialID;
+    public int CurrentID;
+    
     [Title("General Properties")] [SerializeField]
     private int defaultInitialAmount = 100;
 
@@ -62,23 +67,23 @@ public class Resource : ScriptableObject
     {
         if (shouldSaveInitial)
         {
-            PlayerPrefs.SetInt(nameof(InitialAmount), InitialAmount);
+            PlayerPrefs.SetInt($"{InitialID}", InitialAmount);
         }
     }
 
     public void LoadInitialAsCurrent()
     {
-        InitialAmount = PlayerPrefs.GetInt(nameof(CurrentAmount), defaultInitialAmount);
+        InitialAmount = PlayerPrefs.GetInt($"{CurrentID}", defaultInitialAmount);
     }
 
     public void LoadInitial()
     {
-        InitialAmount = PlayerPrefs.GetInt(nameof(InitialAmount), defaultInitialAmount);
+        InitialAmount = PlayerPrefs.GetInt($"{InitialID}", defaultInitialAmount);
     }
 
     private void SaveCurrent()
     {
-        PlayerPrefs.SetInt(nameof(CurrentAmount), CurrentAmount);
+        PlayerPrefs.SetInt($"{CurrentID}", CurrentAmount);
     }
 
     public void Increase(int amount = 1) => CurrentAmount += amount;
@@ -95,5 +100,12 @@ public class Resource : ScriptableObject
     {
         InitialAmount += amount;
         SetCurrentToInitial();
+    }
+    
+    [Button("Get Rnd ID")]
+    private void SetRandomID()
+    {
+        CurrentID = Random.Range(0, Int32.MaxValue);
+        InitialID = Random.Range(0, Int32.MaxValue);
     }
 }
