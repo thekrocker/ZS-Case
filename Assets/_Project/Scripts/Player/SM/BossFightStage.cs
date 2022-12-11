@@ -2,16 +2,16 @@
 
 namespace _Project.Scripts.Player.SM
 {
-    public class EndGameState : PlayerBaseState
+    public class BossFightStage : PlayerBaseState
     {
-        public EndGameState(PlayerStateMachine machine, string name) : base(machine, name)
+        public BossFightStage(PlayerStateMachine machine, string name) : base(machine, name)
         {
         }
 
         public override void Enter()
         {
-            StaticEvents.OnGameEnded?.Invoke();
-            Machine.Animation.SetDanceAnim();
+            StaticEvents.OnArrivedFinish?.Invoke();
+            Machine.Animation.SetMoveAnim(false);
         }
 
         public override void Update()

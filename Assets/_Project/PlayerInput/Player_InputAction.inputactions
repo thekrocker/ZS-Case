@@ -68,6 +68,44 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "BossFight",
+            "id": "194f9d4e-fcab-46ef-82af-81d582767d0c",
+            "actions": [
+                {
+                    "name": "OnTap",
+                    "type": "Button",
+                    "id": "e8a6190a-1830-446e-abe0-9f1df032e231",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c3134982-9b34-4b73-9d89-160b38ea6103",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "47b1209b-088c-47ab-936c-f390887b1e1d",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

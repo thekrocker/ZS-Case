@@ -11,7 +11,7 @@ namespace _Project.Scripts.Player.SM
 
         public PreGameState PreGameState { get; private set; }
         public InGameState InGameState { get; private set; }
-        public EndGameState EndGameState { get; private set; }
+        public BossFightStage BossFightStage { get; private set; }
 
         #endregion
         
@@ -27,7 +27,7 @@ namespace _Project.Scripts.Player.SM
         {
             PreGameState = new PreGameState(this, "Pre-Game State");
             InGameState = new InGameState(this, "In-Game State");
-            EndGameState = new EndGameState(this, "End-Game State");
+            BossFightStage = new BossFightStage(this, "End-Game State");
         }
 
         private void OnTriggerEnter(Collider other)

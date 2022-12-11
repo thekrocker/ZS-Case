@@ -11,23 +11,37 @@ namespace Player.Input
 
         public Action OnStartDrag;
         public Action OnEndDrag;
+        public Action OnTapAction;
         
         private void Awake()
         {
             _inputAction = new Player_InputAction();
+            
             _inputAction.Gameplay.OnDragStart.performed += OnDragStart;
             _inputAction.Gameplay.OnDragEnd.performed += OnDragEnd;
+            _inputAction.BossFight.OnTap.performed += OnTap;
         }
-
+        
         private void OnEnable()
         {
-            _inputAction.Enable();
-            StaticEvents.OnGameEnded += DisableInput;
+            _inputAction.Gameplay.Enable();
+            StaticEvents.OnArrivedFinish += DisableMovementInput;
+            StaticEvents.OnArrivedFinish += ActivateBossFightInput;
         }
 
-        private void DisableInput()
+        private void ActivateBossFightInput()
         {
-            _inputAction.Disable();
+            _inputAction.BossFight.Enable();
+        }
+
+        private void DisableMovementInput()
+        {
+            _inputAction.Gameplay.Disable();
+        }
+
+        private void DisableBossFightInput()
+        {
+            _inputAction.BossFight.Disable();
         }
 
         public Vector3 GetMousePos()
@@ -44,11 +58,18 @@ namespace Player.Input
         {
             OnEndDrag?.Invoke();
         }
+        
+        private void OnTap(InputAction.CallbackContext obj)
+        {
+            OnTapAction?.Invoke();
+            Debug.Log("Tap input activated..");
+        }
 
         private void OnDisable()
         {
-            DisableInput();
-            StaticEvents.OnGameEnded -= DisableInput;
+            DisableMovementInput();
+            StaticEvents.OnArrivedFinish -= DisableMovementInput;
+            StaticEvents.OnArrivedFinish -= ActivateBossFightInput;
         }
     }
 }

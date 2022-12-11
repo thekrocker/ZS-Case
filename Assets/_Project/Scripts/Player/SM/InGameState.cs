@@ -21,7 +21,7 @@ namespace _Project.Scripts.Player.SM
         public override void TriggerEnter(Collider collider)
         {
             base.TriggerEnter(collider);
-            if (collider.gameObject.CompareTag("Finish")) Machine.ChangeState(Machine.EndGameState);
+            if (collider.gameObject.CompareTag("Finish")) Machine.ChangeState(Machine.BossFightStage);
         }
 
         public override void Exit()

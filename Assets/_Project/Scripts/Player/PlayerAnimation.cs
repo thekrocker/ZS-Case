@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -8,6 +6,20 @@ public class PlayerAnimation : MonoBehaviour
     
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int DanceTrigger = Animator.StringToHash("danceTrigger");
+    private static readonly int PunchRightTrigger = Animator.StringToHash("punchRightTrigger");
+    private static readonly int PunchLeftTrigger = Animator.StringToHash("punchLeftTrigger");
+    private static readonly int KickTrigger = Animator.StringToHash("kickTrigger");
+
+    private int[] _attackTriggers;
+    private void Awake()
+    {
+        _attackTriggers = new[]
+        {
+            PunchLeftTrigger,
+            PunchRightTrigger,
+            KickTrigger
+        };
+    }
 
     public void SetMoveAnim(bool s)
     {
@@ -19,5 +31,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (animator == null) return;
         animator.SetTrigger(DanceTrigger);
+    }
+
+    public void SetAttackAnim()
+    {
+        if (animator == null) return;
+        animator.SetTrigger(_attackTriggers[Random.Range(0, _attackTriggers.Length)]);
     }
 }

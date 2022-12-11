@@ -81,6 +81,44 @@ public class @Player_InputAction : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""BossFight"",
+            ""id"": ""194f9d4e-fcab-46ef-82af-81d582767d0c"",
+            ""actions"": [
+                {
+                    ""name"": ""OnTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""e8a6190a-1830-446e-abe0-9f1df032e231"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c3134982-9b34-4b73-9d89-160b38ea6103"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47b1209b-088c-47ab-936c-f390887b1e1d"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OnTap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -89,6 +127,9 @@ public class @Player_InputAction : IInputActionCollection, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_OnDragStart = m_Gameplay.FindAction("OnDragStart", throwIfNotFound: true);
         m_Gameplay_OnDragEnd = m_Gameplay.FindAction("OnDragEnd", throwIfNotFound: true);
+        // BossFight
+        m_BossFight = asset.FindActionMap("BossFight", throwIfNotFound: true);
+        m_BossFight_OnTap = m_BossFight.FindAction("OnTap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -175,9 +216,46 @@ public class @Player_InputAction : IInputActionCollection, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // BossFight
+    private readonly InputActionMap m_BossFight;
+    private IBossFightActions m_BossFightActionsCallbackInterface;
+    private readonly InputAction m_BossFight_OnTap;
+    public struct BossFightActions
+    {
+        private @Player_InputAction m_Wrapper;
+        public BossFightActions(@Player_InputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @OnTap => m_Wrapper.m_BossFight_OnTap;
+        public InputActionMap Get() { return m_Wrapper.m_BossFight; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BossFightActions set) { return set.Get(); }
+        public void SetCallbacks(IBossFightActions instance)
+        {
+            if (m_Wrapper.m_BossFightActionsCallbackInterface != null)
+            {
+                @OnTap.started -= m_Wrapper.m_BossFightActionsCallbackInterface.OnOnTap;
+                @OnTap.performed -= m_Wrapper.m_BossFightActionsCallbackInterface.OnOnTap;
+                @OnTap.canceled -= m_Wrapper.m_BossFightActionsCallbackInterface.OnOnTap;
+            }
+            m_Wrapper.m_BossFightActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @OnTap.started += instance.OnOnTap;
+                @OnTap.performed += instance.OnOnTap;
+                @OnTap.canceled += instance.OnOnTap;
+            }
+        }
+    }
+    public BossFightActions @BossFight => new BossFightActions(this);
     public interface IGameplayActions
     {
         void OnOnDragStart(InputAction.CallbackContext context);
         void OnOnDragEnd(InputAction.CallbackContext context);
+    }
+    public interface IBossFightActions
+    {
+        void OnOnTap(InputAction.CallbackContext context);
     }
 }

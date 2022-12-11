@@ -35,7 +35,7 @@ namespace Manager
         {
             StaticEvents.OnPreGameStarted += ActivatePreGamePanel;
             StaticEvents.OnTappedToPlay += ActivateInGamePanel;
-            StaticEvents.OnGameEnded += ActivateEndGamePanel;
+            //StaticEvents.OnArrivedFinish += ActivateEndGamePanel;
         }
 
         private void SetPersistentPanel(bool s)
@@ -76,7 +76,7 @@ namespace Manager
         private void OnDisable()
         {
             StaticEvents.OnPreGameStarted -= ActivatePreGamePanel;
-            StaticEvents.OnGameEnded -= ActivateEndGamePanel;
+            //StaticEvents.OnArrivedFinish -= ActivateEndGamePanel;
         }
     }
 }
