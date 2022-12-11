@@ -738,79 +738,6 @@ Transform:
   m_Father: {fileID: 4470456336476463425}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4938278554862604473
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5650064205961242634}
-  - component: {fileID: 4908372074485179865}
-  - component: {fileID: 4438280673786125010}
-  m_Layer: 0
-  m_Name: BossTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5650064205961242634
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4938278554862604473}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 276.28}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4470456336476463425}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4908372074485179865
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4938278554862604473}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.7149143, y: 5.5930467, z: 1}
-  m_Center: {x: -0.31126738, y: 0.64166236, z: 0}
---- !u!114 &4438280673786125010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4938278554862604473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ef5752311a0d0c4ebdf2066f36e7ffa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tag: Player
-  Trigger:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 200807557962119230}
-        m_TargetAssemblyTypeName: Boss, Assembly-CSharp
-        m_MethodName: RoarAnim
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &5647927822941912339
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,7 +848,6 @@ Transform:
   - {fileID: 4343781027570832975}
   - {fileID: 200807557962119228}
   - {fileID: 1372294938348578400}
-  - {fileID: 5650064205961242634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1016,18 +942,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6325583481658049617, guid: 9d67f799a72c2034caae7911f8a9684e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6325583481658049617, guid: 9d67f799a72c2034caae7911f8a9684e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6325583481658049617, guid: 9d67f799a72c2034caae7911f8a9684e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6325583481658049617, guid: 9d67f799a72c2034caae7911f8a9684e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06
       objectReference: {fileID: 0}
@@ -1078,14 +992,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6325583481658049617, guid: 9d67f799a72c2034caae7911f8a9684e, type: 3}
   m_PrefabInstance: {fileID: 6125341626471890029}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &200807557962119230 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6325583481658049619, guid: 9d67f799a72c2034caae7911f8a9684e, type: 3}
-  m_PrefabInstance: {fileID: 6125341626471890029}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b47d43e3a3f67049908ac52f7767a45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

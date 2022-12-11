@@ -24,9 +24,8 @@ public class Boss : MonoBehaviour, IDamageable<float>
     // REFACTOR LATER TO boss anim controller
     [SerializeField] private Animator animator;
     [SerializeField] private BossVisualProperties visualProperties;
-    
-    
-    
+
+
     private static readonly int DieTrigger = Animator.StringToHash("dieTrigger");
     private static readonly int RoarTrigger = Animator.StringToHash("roarTrigger");
     private static readonly int HitTrigger = Animator.StringToHash("hitTrigger");
@@ -36,8 +35,8 @@ public class Boss : MonoBehaviour, IDamageable<float>
     private void Awake()
     {
         Health = GetComponent<Health>();
-        BossManager.Instance.DamageableBoss = this;
-        visualProperties.SetRandomColor();
+        SetCurrentBoss();
+        SetRndColor();
     }
 
     private void OnEnable()
@@ -46,9 +45,20 @@ public class Boss : MonoBehaviour, IDamageable<float>
         Health.OnDamage += OnBossDamaged;
     }
 
+
+    private void SetRndColor()
+    {
+        visualProperties.SetRandomColor();
+    }
+
+    private void SetCurrentBoss()
+    {
+        BossManager.Instance.DamageableBoss = this;
+    }
+
+
     private void OnBossDamaged()
     {
-        // Play shader or smth..
         animator.SetTrigger(HitTrigger);
     }
 
@@ -56,7 +66,7 @@ public class Boss : MonoBehaviour, IDamageable<float>
     {
         StaticEvents.OnBossDefeated?.Invoke();
         DieAnim();
-        Debug.Log("Boss Died"); 
+        Debug.Log("Boss Died");
     }
 
     private void DieAnim()
@@ -73,7 +83,7 @@ public class Boss : MonoBehaviour, IDamageable<float>
     {
         Health.Damage(amount);
     }
-    
+
     private void OnDisable()
     {
         Health.OnDied -= OnDie;
