@@ -9,6 +9,8 @@ namespace Statics
         public static Action OnTappedToPlay;
         public static Action OnArrivedFinish;
         public static Action OnNextButtonClicked;
+        public static Action OnPlayerAttack;
+        public static Action OnBossDefeated;
     }
 }
 

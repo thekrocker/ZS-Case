@@ -25,8 +25,10 @@ namespace Player.Input
         private void OnEnable()
         {
             _inputAction.Gameplay.Enable();
+            
             StaticEvents.OnArrivedFinish += DisableMovementInput;
             StaticEvents.OnArrivedFinish += ActivateBossFightInput;
+            StaticEvents.OnBossDefeated += DisableBossFightInput;
         }
 
         private void ActivateBossFightInput()
@@ -68,8 +70,11 @@ namespace Player.Input
         private void OnDisable()
         {
             DisableMovementInput();
+            DisableBossFightInput();
+            
             StaticEvents.OnArrivedFinish -= DisableMovementInput;
             StaticEvents.OnArrivedFinish -= ActivateBossFightInput;
+            StaticEvents.OnBossDefeated -= DisableBossFightInput;
         }
     }
 }

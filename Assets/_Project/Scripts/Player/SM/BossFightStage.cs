@@ -11,7 +11,6 @@ namespace _Project.Scripts.Player.SM
         public override void Enter()
         {
             StaticEvents.OnArrivedFinish?.Invoke();
-            Machine.Animation.SetMoveAnim(false);
         }
 
         public override void Update()

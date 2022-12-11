@@ -1,9 +1,12 @@
+using System;
+using Statics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    
+
     private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int DanceTrigger = Animator.StringToHash("danceTrigger");
     private static readonly int PunchRightTrigger = Animator.StringToHash("punchRightTrigger");
@@ -11,6 +14,7 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int KickTrigger = Animator.StringToHash("kickTrigger");
 
     private int[] _attackTriggers;
+
     private void Awake()
     {
         _attackTriggers = new[]
@@ -21,10 +25,29 @@ public class PlayerAnimation : MonoBehaviour
         };
     }
 
-    public void SetMoveAnim(bool s)
+    private void OnEnable()
+    {
+        StaticEvents.OnPreGameStarted += PlayIdle;
+        StaticEvents.OnTappedToPlay += PlayMove;
+        StaticEvents.OnPlayerAttack += SetAttackAnim;
+        StaticEvents.OnBossDefeated += SetDanceAnim;
+        StaticEvents.OnArrivedFinish += PlayIdle;
+    }
+
+    private void DecideMoveAnim(bool s)
     {
         if (animator == null) return;
         animator.SetBool(IsMoving, s);
+    }
+
+    public void PlayIdle()
+    {
+        DecideMoveAnim(false);
+    }
+
+    public void PlayMove()
+    {
+        DecideMoveAnim(true);
     }
 
     public void SetDanceAnim()
@@ -37,5 +60,14 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (animator == null) return;
         animator.SetTrigger(_attackTriggers[Random.Range(0, _attackTriggers.Length)]);
+    }
+
+    private void OnDisable()
+    {
+        StaticEvents.OnPreGameStarted -= PlayIdle;
+        StaticEvents.OnTappedToPlay -= PlayMove;
+        StaticEvents.OnPlayerAttack -= SetAttackAnim;
+        StaticEvents.OnBossDefeated -= SetDanceAnim;
+        StaticEvents.OnArrivedFinish -= PlayIdle;
     }
 }

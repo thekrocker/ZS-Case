@@ -11,7 +11,6 @@ namespace _Project.Scripts.Player.SM
         public override void Enter()
         {
             StaticEvents.OnTappedToPlay += SetInGameState;
-            Machine.Animation.SetMoveAnim(false);
         }
 
         private void SetInGameState()

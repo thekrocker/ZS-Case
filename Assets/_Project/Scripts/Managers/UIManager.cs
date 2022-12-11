@@ -35,7 +35,7 @@ namespace Manager
         {
             StaticEvents.OnPreGameStarted += ActivatePreGamePanel;
             StaticEvents.OnTappedToPlay += ActivateInGamePanel;
-            //StaticEvents.OnArrivedFinish += ActivateEndGamePanel;
+            StaticEvents.OnArrivedFinish += DisablePersistentPanel;
         }
 
         private void SetPersistentPanel(bool s)
@@ -57,10 +57,14 @@ namespace Manager
         private void ActivateEndGamePanel()
         {
             ChangePanel(endGamePanel);
-            SetPersistentPanel(false);
+            DisablePersistentPanel();
         }
 
-
+        private void DisablePersistentPanel()
+        {
+            SetPersistentPanel(false);
+        }
+        
         private void ChangePanel(BasePanel obj)
         {
             DisablePanelVisibility();
@@ -76,7 +80,9 @@ namespace Manager
         private void OnDisable()
         {
             StaticEvents.OnPreGameStarted -= ActivatePreGamePanel;
-            //StaticEvents.OnArrivedFinish -= ActivateEndGamePanel;
+            StaticEvents.OnTappedToPlay -= ActivateInGamePanel;
+            StaticEvents.OnArrivedFinish -= DisablePersistentPanel;
+
         }
     }
 }
