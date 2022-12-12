@@ -1,11 +1,12 @@
 # Zerosum Case
 ## Info
 
-Hello, I've created the Zerosum case as regarding to case properties. It was quite enjoyable for me since you provided only the basics and I am be able to improve gameplay as I want. It feels like its quite Rogue-lite game where we can improve our character and defeat end-game bosses. I want to explain some features in game to more easily search in Project. 
+Hello, I've created the Zerosum case as regarding to case properties. It was quite enjoyable for me since you provided only the basics and I am be able to improve gameplay as I want. It feels like its quite Rogue-lite game where we can improve our character and defeat end-game bosses. Even if we cant defeat boss, we still pass the level & upgrade our character & gain some gold.
+
 
 **You can start playing from GameScene. I've used 2020.3.8f Unity version which is the version of the case project that you provided.**
 
-I hope you enjoy the game too! :)
+I want to explain some features in game to more easily search in Project. 
 
 ## Features
 
@@ -26,3 +27,7 @@ I would add;
 - more visual improvement, 
 - shop system for our character like buying axe
 - and more...
+
+
+I hope you enjoy the game too! :)
+
