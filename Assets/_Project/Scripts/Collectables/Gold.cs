@@ -11,6 +11,7 @@ namespace Collectable
             resource.Increase(collectableData.increaseRate);
             OnCollected?.Invoke();
             MoveUp();
+            LevelController.GainedCoin += collectableData.increaseRate;
         }
     }
 }

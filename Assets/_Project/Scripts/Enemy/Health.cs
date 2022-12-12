@@ -6,6 +6,7 @@ namespace _Project.Scripts.Enemy
 {
     public class Health : MonoBehaviour
     {
+        [SerializeField] private float defaultValue = 100;
         [SerializeField] private FloatValue initial;
         [ReadOnly] [SerializeField] private float currentHp;
 
@@ -31,7 +32,7 @@ namespace _Project.Scripts.Enemy
 
         private void LoadInitial()
         {
-            initial.floatValue = PlayerPrefs.GetFloat(nameof(initial), 100);
+            initial.floatValue = PlayerPrefs.GetFloat(nameof(initial), defaultValue);
         }
 
         public void Damage(float amount)

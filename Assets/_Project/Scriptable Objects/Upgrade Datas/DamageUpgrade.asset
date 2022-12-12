@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costId: 1253398205
   levelId: 499198574
-  cost: 50
+  defaultCostValue: 50
+  cost: 400
   level: 1
   sprite: {fileID: 21300000, guid: 15a67c13df4b1d24e8a5d983d379a100, type: 3}
   upgradeName: 

@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254237b1bcbd48aea288b77329b57e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultValue: 100
   initial: {fileID: 11400000, guid: 19d7e8c738b397640835e85df06afa45, type: 2}
   currentHp: 0
 --- !u!114 &7207351748701254076

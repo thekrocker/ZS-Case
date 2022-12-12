@@ -10,7 +10,8 @@ public abstract class BaseUpgradeData : ScriptableObject
     [Title("Func")] 
     public int costId;
     public int levelId;
-    
+
+    public int defaultCostValue;
     public int cost;
     public int level = 1;
     
@@ -60,7 +61,7 @@ public abstract class BaseUpgradeData : ScriptableObject
     public void LoadStats()
     {
         Level = PlayerPrefs.GetInt($"{levelId}", 1);
-        Cost = PlayerPrefs.GetInt($"{costId}", cost);
+        Cost = PlayerPrefs.GetInt($"{costId}", defaultCostValue);
     }
 
     [Button("Get Rnd ID")]

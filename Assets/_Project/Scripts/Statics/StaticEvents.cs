@@ -12,9 +12,11 @@ namespace Statics
         public static Action OnArrivedFinish;
         public static Action OnNextButtonClicked;
         public static Action OnPlayerAttack;
+        public static Action<bool> OnBossStageEnded; // Holds the bool if we win or lose as arg
         public static Action OnBossDefeated;
-        public static Action OnLose;
+        public static Action OnPlayerLose;
         public static Action OnNextLevelInit;
+        public static Action OnCoinAnimCompleted;
         
         // SHOP
         
@@ -23,7 +25,7 @@ namespace Statics
 
         // CAM
         public static Action OnInGameCamBlent;
-        public static Action OnEndGameCamBlent;
+        public static Action<bool> OnEndGameCamBlent; // Holds the bool if we win or lose as arg
 
     }
 }

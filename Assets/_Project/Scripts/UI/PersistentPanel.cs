@@ -32,6 +32,7 @@ public class PersistentPanel : MonoBehaviour
         diamondResource.OnValueChanged += SetDiamondUI;
         currencyGoldResource.OnValueChanged += SetCurrencyGoldUI;
         StaticEvents.OnLevelChanged += SetLevelText;
+        SetLevelTextVisibility(true);
     }
 
     private void SetCurrencyGoldUI(object sender, ResourceArgs e)
@@ -43,7 +44,6 @@ public class PersistentPanel : MonoBehaviour
     private void SetDiamondUI(object sender, ResourceArgs e)
     {
         SetText(diamondText, e.Current);
-
     }
 
     private void SetLevelText(int obj)
@@ -51,6 +51,10 @@ public class PersistentPanel : MonoBehaviour
         SetText(levelText, obj, "LEVEL ");
     }
 
+    public void SetLevelTextVisibility(bool s)
+    {
+        levelText.gameObject.SetActive(s);
+    }
     private void SetCurrencyGoldUI()
     {
         SetText(currencyGoldText, currencyGoldResource.CurrentAmount);

@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5899040058342026408}
+  diamondResource: {fileID: 11400000, guid: 4fa12af027ce1c7428a340be7bb3b089, type: 2}
 --- !u!114 &3072463638175467833
 MonoBehaviour:
   m_ObjectHideFlags: 0

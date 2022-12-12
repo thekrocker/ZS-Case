@@ -16,11 +16,13 @@ public class LevelController : MonoBehaviour
     private float _blendTime;
     private WaitForSeconds _blendInSeconds;
 
+    public static int GainedCoin;
     private void Awake()
     {
         _cam = Camera.main;
         _blendTime = _cam.GetComponent<CinemachineBrain>().m_DefaultBlend.BlendTime;
         _blendInSeconds = new WaitForSeconds(_blendTime);
+        GainedCoin = 0;
     }
 
     private void Start()
@@ -33,7 +35,7 @@ public class LevelController : MonoBehaviour
         StaticEvents.OnTappedToPlay += SetInGameCamera;
         StaticEvents.OnArrivedFinish += EnableBossBar;
         StaticEvents.OnBossDefeated += DisableBossBar;
-        StaticEvents.OnBossDefeated += SetEndGameCamera;
+        StaticEvents.OnBossStageEnded += SetEndGameCamera;
     }
 
     private void SetPreGameCamera()
@@ -55,7 +57,7 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    private void SetEndGameCamera()
+    private void SetEndGameCamera(bool s)
     {
         float offset = 1f;
         WaitForSeconds offsetInSec = new WaitForSeconds(offset);
@@ -67,7 +69,7 @@ public class LevelController : MonoBehaviour
             yield return offsetInSec;
             endGameCam.SetActive(true);
             yield return blendAndOffset;
-            StaticEvents.OnEndGameCamBlent?.Invoke();
+            StaticEvents.OnEndGameCamBlent?.Invoke(s);
         }
     }
 
@@ -87,6 +89,6 @@ public class LevelController : MonoBehaviour
         StaticEvents.OnTappedToPlay -= SetInGameCamera;
         StaticEvents.OnArrivedFinish -= EnableBossBar;
         StaticEvents.OnBossDefeated -= DisableBossBar;
-        StaticEvents.OnBossDefeated -= SetEndGameCamera;
+        StaticEvents.OnBossStageEnded -= SetEndGameCamera;
     }
 }

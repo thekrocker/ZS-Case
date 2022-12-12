@@ -14,7 +14,8 @@ namespace Manager
 
         [SerializeField] private PreGamePanel preGamePanel;
         [SerializeField] private InGamePanel inGamePanel;
-        [SerializeField] private EndGamePanel endGamePanel;
+        [SerializeField] private EndGamePanel winGamePanel;
+        [SerializeField] private EndGamePanel loseGamePanel;
 
         private BasePanel _activePanel;
 
@@ -35,7 +36,7 @@ namespace Manager
         {
             StaticEvents.OnPreGameStarted += ActivatePreGamePanel;
             StaticEvents.OnTappedToPlay += ActivateInGamePanel;
-            StaticEvents.OnArrivedFinish += DisablePersistentPanel;
+            StaticEvents.OnArrivedFinish += DisableLevelText;
             StaticEvents.OnEndGameCamBlent += ActivateEndGamePanel;
         }
 
@@ -55,15 +56,22 @@ namespace Manager
             ChangePanel(inGamePanel);
         }
 
-        private void ActivateEndGamePanel()
+        private void ActivateEndGamePanel(bool isWin)
         {
-            ChangePanel(endGamePanel);
-            DisablePersistentPanel();
+            if (isWin)
+            {
+                ChangePanel(winGamePanel);
+            }
+            else
+            {
+                ChangePanel(loseGamePanel);
+            }
+            
         }
 
-        private void DisablePersistentPanel()
+        private void DisableLevelText()
         {
-            SetPersistentPanel(false);
+            persistentPanel.SetLevelTextVisibility(false);
         }
         
         private void ChangePanel(BasePanel obj)
@@ -82,7 +90,7 @@ namespace Manager
         {
             StaticEvents.OnPreGameStarted -= ActivatePreGamePanel;
             StaticEvents.OnTappedToPlay -= ActivateInGamePanel;
-            StaticEvents.OnArrivedFinish -= DisablePersistentPanel;
+            StaticEvents.OnArrivedFinish -= DisableLevelText;
             StaticEvents.OnEndGameCamBlent -= ActivateEndGamePanel;
         }
     }

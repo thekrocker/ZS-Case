@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.Enemy;
+using DG.Tweening;
 using Manager;
 using Statics;
 using UnityEngine;
@@ -56,6 +57,12 @@ public class Boss : MonoBehaviour, IDamageable<float>
     {
         Health.OnDied += OnDie;
         Health.OnDamage += OnBossDamaged;
+        StaticEvents.OnPlayerLose += OnBossWin;
+    }
+
+    private void OnBossWin()
+    {
+        transform.DOMoveY(transform.position.y - 10f, 0.5f).SetEase(Ease.Linear);
     }
 
 
@@ -99,6 +106,9 @@ public class Boss : MonoBehaviour, IDamageable<float>
 
     private void OnDie()
     {
+        // Player wins..We pass true for that
+        GameManager.Instance.GameWin = true;
+        StaticEvents.OnBossStageEnded?.Invoke(true);
         StaticEvents.OnBossDefeated?.Invoke();
     }
 
@@ -117,5 +127,6 @@ public class Boss : MonoBehaviour, IDamageable<float>
     {
         Health.OnDied -= OnDie;
         Health.OnDamage -= OnBossDamaged;
+        StaticEvents.OnPlayerLose -= OnBossWin;
     }
 }

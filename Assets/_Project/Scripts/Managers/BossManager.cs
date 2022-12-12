@@ -9,7 +9,7 @@ namespace Manager
     public class BossManager : SingletonClass.Singleton<BossManager>
     {
         [SerializeField] private float bossHpIncreaseRate;
-        
+        public int BossBonusCount = 150;
         public IDamageable<float> DamageableBoss;
 
         private void OnEnable()

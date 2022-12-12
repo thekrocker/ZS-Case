@@ -19,6 +19,7 @@ namespace Manager
         public float GetPlatformLength() => platformTemplate.size.z;
         public float GetPlatformWidth() => platformTemplate.size.x;
 
+        public bool GameWin { get; set; }
 
         protected override void Awake()
         {

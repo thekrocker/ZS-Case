@@ -38,7 +38,7 @@ namespace Helpers
             float targetAlpha = 0f)
         {
             DOTween.Sequence().Append(txt.DOFade(targetAlpha, duration).SetDelay(delay))
-                .Append(txt.DOFade(initialAlpha, duration)).SetLoops(-1, LoopType.Restart);
+                .Append(txt.DOFade(initialAlpha, duration)).SetLoops(-1, LoopType.Restart).SetLink(txt.gameObject);
         }
 
         public static void PunchScaleTween(this Transform target, float punchRatio, float duration = 0,

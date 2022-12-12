@@ -38,9 +38,7 @@ namespace _Project.Scripts.Player
 
         private void OnAttack()
         {
-            if (!HasEnoughResource()) return;
             if (_attacking) return;
-
             _attacking = true;
 
             StartCoroutine(IEAttack());
@@ -53,7 +51,9 @@ namespace _Project.Scripts.Player
                 }
                 else
                 {
-                    StaticEvents.OnLose?.Invoke();
+                    GameManager.Instance.GameWin = false;
+                    StaticEvents.OnBossStageEnded?.Invoke(false); // We lost so we pass false
+                    StaticEvents.OnPlayerLose?.Invoke();
                     yield break;
                 }
 

@@ -1,4 +1,5 @@
 using System;
+using _Project.Scripts.EventArgs;
 using Statics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,12 +7,15 @@ using Random = UnityEngine.Random;
 public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-
-    private static readonly int IsMoving = Animator.StringToHash("isMoving");
+    [SerializeField] private Resource diamondResource;
+    
+private static readonly int IsMoving = Animator.StringToHash("isMoving");
     private static readonly int DanceTrigger = Animator.StringToHash("danceTrigger");
     private static readonly int PunchRightTrigger = Animator.StringToHash("punchRightTrigger");
     private static readonly int PunchLeftTrigger = Animator.StringToHash("punchLeftTrigger");
     private static readonly int KickTrigger = Animator.StringToHash("kickTrigger");
+    private static readonly int StackVelocity = Animator.StringToHash("stackVelocity");
+    private static readonly int DefeatTrigger = Animator.StringToHash("defeatTrigger");
 
     private int[] _attackTriggers;
 
@@ -32,6 +36,20 @@ public class PlayerAnimation : MonoBehaviour
         StaticEvents.OnPlayerAttack += SetAttackAnim;
         StaticEvents.OnBossDefeated += SetDanceAnim;
         StaticEvents.OnArrivedFinish += PlayIdle;
+        StaticEvents.OnPlayerLose += PlayDefeatAnim;
+        diamondResource.OnValueChanged += PlayMoveBlend;
+    }
+
+    private void PlayDefeatAnim()
+    {
+        if (animator == null) return;
+        animator.SetTrigger(DefeatTrigger);
+    }
+
+    private void PlayMoveBlend(object sender, ResourceArgs e)
+    {
+        if (animator == null) return;
+        animator.SetFloat(StackVelocity, (float) e.Current / (float) e.Max);
     }
 
     private void DecideMoveAnim(bool s)
@@ -67,7 +85,10 @@ public class PlayerAnimation : MonoBehaviour
         StaticEvents.OnPreGameStarted -= PlayIdle;
         StaticEvents.OnInGameCamBlent -= PlayMove;
         StaticEvents.OnPlayerAttack -= SetAttackAnim;
-        StaticEvents.OnBossDefeated -= SetDanceAnim;
         StaticEvents.OnArrivedFinish -= PlayIdle;
+        StaticEvents.OnBossDefeated -= SetDanceAnim;
+        StaticEvents.OnPlayerLose -= PlayDefeatAnim;
+        diamondResource.OnValueChanged -= PlayMoveBlend;
+
     }
 }
