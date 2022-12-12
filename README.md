@@ -3,6 +3,8 @@
 
 Hello, I've created the Zerosum case as regarding to case properties. It was quite enjoyable for me since you provided only the basics and I am be able to improve gameplay as I want. I want to explain some features in game to more easily search in Project. 
 
+**You can start playing from GameScene. I've used 2020.3.8f Unity version which is the version of the case project that you provided.**
+
 I hope you enjoy the game too! :)
 
 ## Features
