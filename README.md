@@ -15,7 +15,7 @@ I want to explain some features in game to more easily search in Project.
 - As we cant spend stacks, I created and End-Game boss where we can hit him by tapping screen. Boss health is upgraded in every level-change. Since i have 2 input system, I used new input system. 
 - As we have game boss now, I have the capacity of spending stacks (when attacking boss, we spend stacks that we gathered.) & capacity of upgrading our player like start stack size & damage & attack rate. As we gain gold, we can upgrade our player.
 - Since we need to save our values, I used PlayerPrefs to save some little data for the sake of Hyper-casual game. For larger scale projects, I would create JSON save system.
-- When our character gathers stacks, character run animation blends between 0-1 (CurrentStack / MaxStack)
+- When our character gathers stacks, character run animation blends between 0-1 (CurrentStack / MaxStack) (Normal Run / Naruto Run)
 - I've created character state machine system where we can easily handle Pre-Game, InGame, Boss-Stage & end game. 
 - For particles & gold increase UI at the end, I used Object Pooling System.
 
